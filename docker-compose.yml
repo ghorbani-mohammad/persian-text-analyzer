@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  persian_ner:
-    container_name: persian_ner
+  persian_analyzer_api:
+    container_name: persian_analyzer_api
     build: .
     restart: unless-stopped
     volumes:
