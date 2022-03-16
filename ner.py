@@ -8,7 +8,7 @@ normalizer = hazm.Normalizer()
 model_name_or_path = 'model'
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 model = AutoModelForTokenClassification.from_pretrained(model_name_or_path)
-ner_model = pipeline('model', model=model, tokenizer=tokenizer)
+ner_model = pipeline('ner', model=model, tokenizer=tokenizer)
 
 
 def ner_report(outputs):
