@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  persian_ner:
+    container_name: persian_ner
+    build: .
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    command: "sleep 100000"
+    shm_size: 4g
