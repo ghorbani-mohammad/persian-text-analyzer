@@ -84,4 +84,4 @@ def create_ner(name):
             continue
 
 
-create_ner("sentiment")
+create_ner("ner")
