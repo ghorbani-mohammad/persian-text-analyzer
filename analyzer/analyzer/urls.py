@@ -1,9 +1,8 @@
-from django.urls import path
 from django.contrib import admin
+from django.urls import path, include
 
-from . import views
 
 urlpatterns = [
     path('secret-admin/', admin.site.urls),
-    path("ner/", views.NERExtractionAPIView.as_view()),
+    path("v1/app/", include("app.urls")),
 ]
