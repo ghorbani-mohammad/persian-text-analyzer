@@ -1,0 +1,8 @@
+hazm
+numpy
+openpyxl
+pandas
+sentence-transformers
+sentencepiece
+transformers
+xlrd==1.2.0
