@@ -6,4 +6,5 @@ from . import views
 urlpatterns = [
     path("ner/", views.NERExtractionAPIView.as_view()),
     path("sentiment/", views.SentimentAPIView.as_view()),
+    path("classification/", views.ClassificationAPIView.as_view()),
 ]

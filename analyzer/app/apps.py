@@ -17,4 +17,4 @@ class AppConfig(AppConfig):
     
     sentiment_model = pipeline('sentiment-analysis', model='/app/analyzer/sentiment_model')
 
-    classification_models = pipeline('text-classification', "/app/analyzer/classification_model")
+    classification_model = pipeline('text-classification', "/app/analyzer/classification_model")
