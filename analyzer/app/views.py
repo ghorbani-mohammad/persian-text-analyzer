@@ -10,6 +10,5 @@ class NERExtractionAPIView(views.APIView):
         ner_output = apps.AppConfig.ner_model(apps.AppConfig.normalizer.normalize(text))
         if len(ner_output) > 0:
             entities = utils.ner_report(ner_output)
-            print(entities)
             return Response(entities)
         return Response()
