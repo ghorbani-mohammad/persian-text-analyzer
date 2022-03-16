@@ -5,7 +5,7 @@ from transformers import AutoTokenizer
 from transformers import AutoModelForTokenClassification
 
 normalizer = hazm.Normalizer()
-model_name_or_path = 'model'
+model_name_or_path = 'ner_model'
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 model = AutoModelForTokenClassification.from_pretrained(model_name_or_path)
 ner_model = pipeline('ner', model=model, tokenizer=tokenizer)
