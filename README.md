@@ -16,6 +16,6 @@ docker exec -it persian_ner bash
 4. Run main code by:
 ```
 python ner.py
-``
+```
 
 
