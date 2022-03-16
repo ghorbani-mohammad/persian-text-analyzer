@@ -14,4 +14,7 @@ class AppConfig(AppConfig):
     tokenizer = AutoTokenizer.from_pretrained('/app/analyzer/ner_model')
     model = AutoModelForTokenClassification.from_pretrained('/app/analyzer/ner_model')
     ner_model = pipeline('ner', model=model, tokenizer=tokenizer)
+    
     sentiment_model = pipeline('sentiment-analysis', model='/app/analyzer/sentiment_model')
+
+    classification_models = pipeline('text-classification', "/app/analyzer/classification_model")
