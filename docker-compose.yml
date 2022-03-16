@@ -7,5 +7,7 @@ services:
     restart: unless-stopped
     volumes:
       - .:/app
-    command: "sleep 100000"
+    command: ["python", "/app/analyzer/manage.py", "runserver", "0:80"]
+    ports:
+      - 8040:80
     shm_size: 4g
