@@ -11,7 +11,7 @@ class AppConfig(AppConfig):
     name = 'app'
 
     normalizer = hazm.Normalizer()
-    model_name_or_path = 'ner_model'
+    model_name_or_path = '/app/analyzer/ner_model'
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
     model = AutoModelForTokenClassification.from_pretrained(model_name_or_path)
     ner_model = pipeline('ner', model=model, tokenizer=tokenizer)
