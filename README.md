@@ -1,5 +1,5 @@
-# persian-ner
-NER detection in Persian text by prepared Pytorch model
+# Persian text analyzer
+NER, Sentiment, Classification in Persian text by prepared Pytorch model
 
 
 ## Usage
