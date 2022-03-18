@@ -16,4 +16,8 @@ NER, Sentiment, Classification in Persian text by using prepared Pytorch model
 ```
 docker-compose up
 ```
-4. Now, Django app is ready to use. 
+4. Now, Django app is ready to use. Three APIs are available:
+- `http://localhost:8040/v1/app/ner/`
+- `http://localhost:8040/v1/app/sentiment/`
+- `http://localhost:8040/v1/app/classification/`
+You should send POST request with text field in the body.
