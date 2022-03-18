@@ -12,17 +12,8 @@ NER, Sentiment, Classification in Persian text by using prepared Pytorch model
 
  - [Classification Model](https://foveo-video.s3.ca-central-1.amazonaws.com/stream/ner_pytorch_model.bin)
 
-2. Use docker-compose to setup container by bellow command:
+2. Use docker-compose to setup Django container by bellow command:
 ```
 docker-compose up
 ```
-3. Get into container by bellow command:
-```
-docker exec -it persian_ner bash
-```
-4. Run main code by:
-```
-python ner.py
-```
-
-
+4. Now, Django app is ready to use. 
