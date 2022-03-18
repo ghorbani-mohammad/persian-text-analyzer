@@ -20,4 +20,5 @@ docker-compose up
 - `http://localhost:8040/v1/app/ner/`
 - `http://localhost:8040/v1/app/sentiment/`
 - `http://localhost:8040/v1/app/classification/`
+
 You should send POST request with text field in the body.
