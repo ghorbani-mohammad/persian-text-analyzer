@@ -16,7 +16,7 @@ class NERExtractionAPIView(views.APIView):
 class SentimentAPIView(views.APIView):
     def post(self, request):
         text = request.data['text']
-        result = apps.AppConfig.sentiment_model(apps.AppConfig.normalizer.normalize(text))
+        result = apps.AppConfig.sentiment_model(apps.AppConfig.normalizer.normalize(text), return_all_scores=True)
         return Response(result)
 
 
