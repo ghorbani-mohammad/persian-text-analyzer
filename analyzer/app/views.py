@@ -17,7 +17,12 @@ class SentimentAPIView(views.APIView):
     def post(self, request):
         text = request.data['text']
         result = apps.AppConfig.sentiment_model(apps.AppConfig.normalizer.normalize(text), return_all_scores=True)[0]
-        temp = {'angry': result['furious']+result['angry'], 'happy': result['happy']+result['delighted'], 'neutral':result['neutral']}
+        print(result)
+        temp = {
+            'angry': result['furious']+result['angry'], 
+            'happy': result['happy']+result['delighted'], 
+            'neutral': result['neutral']
+        }
         return Response(temp)
 
 
