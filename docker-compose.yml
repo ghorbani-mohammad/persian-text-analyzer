@@ -11,3 +11,7 @@ services:
     ports:
       - 8040:80
     shm_size: 4g
+  
+networks:
+  default:
+    name: army
