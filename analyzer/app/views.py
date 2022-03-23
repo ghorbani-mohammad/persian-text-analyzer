@@ -29,5 +29,5 @@ class SentimentAPIView(views.APIView):
 class ClassificationAPIView(views.APIView):
     def post(self, request):
         text = request.data['text']
-        result = apps.AppConfig.classification_model(apps.AppConfig.normalizer.normalize(text))
+        result = apps.AppConfig.classification_model(apps.AppConfig.normalizer.normalize(text), return_all_scores=True)
         return Response(result)
