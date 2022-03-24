@@ -20,7 +20,6 @@ class SentimentAPIView(views.APIView):
         result = apps.AppConfig.sentiment_model(
             apps.AppConfig.normalizer.normalize(text), return_all_scores=True
         )[0]
-        print(result)
         temp = {
             "angry": result[0]["score"] + result[1]["score"],
             "happy": result[3]["score"] + result[4]["score"],
