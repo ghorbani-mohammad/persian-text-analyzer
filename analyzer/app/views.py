@@ -11,7 +11,7 @@ class NERExtractionAPIView(views.APIView):
         if len(ner_output) > 0:
             entities = utils.ner_report(ner_output)
             return Response(entities)
-        return Response()
+        return Response({})
 
 
 class SentimentAPIView(views.APIView):
