@@ -1,15 +1,11 @@
 from pathlib import Path
 from django.http.request import HttpRequest
 
+DEBUG = False
+ALLOWED_HOSTS = ["*"]
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-z)#0%j6-2%a35enhl))%db-2qvgv8ot(%y^40-+tzbrxi512jz"
 
-DEBUG = True
-
-ALLOWED_HOSTS = ["*"]
-
-
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -52,9 +48,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "analyzer.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -62,9 +55,6 @@ DATABASES = {
     }
 }
 
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
