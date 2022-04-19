@@ -89,10 +89,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # 'analyzer_api:80'. The domain name provided is not valid according to RFC 1034/1035.
 HttpRequest.get_host = HttpRequest._get_raw_host
 
-dsn = env.str("SENTRY_DSN", default=None)
-if dsn:
+SENTRY_DSN = env.str("SENTRY_DSN", default=None)
+if SENTRY_DSN:
     sentry_sdk.init(
-        dsn=dsn,
+        dsn=SENTRY_DSN,
         integrations=[DjangoIntegration()],
         traces_sample_rate=1.0,
         send_default_pii=True,
