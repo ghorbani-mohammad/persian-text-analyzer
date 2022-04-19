@@ -4,10 +4,10 @@ from pathlib import Path
 from django.http.request import HttpRequest
 from sentry_sdk.integrations.django import DjangoIntegration
 
-DEBUG = False
 ALLOWED_HOSTS = ["*"]
+SECRET_KEY = env.str("SECRET_KEY")
+DEBUG = env.bool("DEBUG", default=False)
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = "django-insecure-z)#0%j6-2%a35enhl))%db-2qvgv8ot(%y^40-+tzbrxi512jz"
 
 
 INSTALLED_APPS = [
