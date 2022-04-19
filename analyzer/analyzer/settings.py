@@ -1,5 +1,8 @@
+import sentry_sdk
+from envparse import env
 from pathlib import Path
 from django.http.request import HttpRequest
+from sentry_sdk.integrations.django import DjangoIntegration
 
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
@@ -85,3 +88,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # for bellow error (it happens because we have _ in container name)
 # 'analyzer_api:80'. The domain name provided is not valid according to RFC 1034/1035.
 HttpRequest.get_host = HttpRequest._get_raw_host
+
+dsn = env.str("SENTRY_DSN", default=None)
+if dsn:
+    sentry_sdk.init(
+        dsn=dsn,
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+        send_default_pii=True,
+        environment="ras-per",
+    )

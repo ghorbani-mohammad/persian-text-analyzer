@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   && rm -rf /var/lib/apt/lists/* && pip install pip-tools
 
 COPY . /app
-RUN pip install -r requirements.txt
+RUN pip-compile && pip install --no-cache-dir -r requirements.txt
+
 
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1

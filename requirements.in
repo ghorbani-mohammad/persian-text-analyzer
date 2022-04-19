@@ -1,5 +1,6 @@
 django
 djangorestframework
+envparse
 fasttext
 hazm
 numpy
@@ -7,5 +8,6 @@ openpyxl
 pandas
 sentence-transformers
 sentencepiece
+sentry-sdk
 transformers
 xlrd==1.2.0
