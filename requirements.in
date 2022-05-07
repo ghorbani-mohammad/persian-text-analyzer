@@ -6,6 +6,7 @@ hazm
 numpy
 openpyxl
 pandas
+parsivar
 sentence-transformers
 sentencepiece
 sentry-sdk
