@@ -1,8 +1,12 @@
+import logging
+
 from rest_framework import views
 from rest_framework.response import Response
 
 from . import apps, utils
 from .rake import get_text_keywords
+
+logger = logging.getLogger(__name__)
 
 
 class NERExtractionAPIView(views.APIView):
@@ -18,9 +22,13 @@ class NERExtractionAPIView(views.APIView):
 class SentimentAPIView(views.APIView):
     def post(self, request):
         text = request.data["text"]
-        result = apps.AppConfig.sentiment_model(
-            apps.AppConfig.normalizer.normalize(text), return_all_scores=True
-        )[0]
+        try:
+            result = apps.AppConfig.sentiment_model(
+                apps.AppConfig.normalizer.normalize(text), return_all_scores=True
+            )[0]
+        except Exception as e:
+            logger.error(e)
+            return {}
         temp = {
             "angry": result[0]["score"] + result[1]["score"],
             "happy": result[3]["score"] + result[4]["score"],
