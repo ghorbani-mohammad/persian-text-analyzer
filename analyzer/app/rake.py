@@ -126,14 +126,16 @@ class TextRank4Keyword:
         for sentence in sentences:
             sentence_candid_phrases = []
             tokens = tokenizer.tokenize_words(sentence)
-            # tags = my_tagger.parse(tokens)
+            tags = my_tagger.parse(tokens)
             candid_phrase = []
             for i, token in enumerate(tokens):
-                if token not in self.stop_words:
+                if (token not in self.stop_words) and (tags[i][1] in candid_pattern):
                     token = token.replace("/u200c", " ")
                     candid_phrase.append(token)
                 else:
-                    if len(candid_phrase) > 1:
+                    if len(candid_phrase) > 1 and (
+                        tags[i][1] == "N_SING" or tags[i][1] == "Ne" or True
+                    ):
                         sentence_candid_phrases.append(candid_phrase)
                     candid_phrase = []
             all_candid_phrases.append(sentence_candid_phrases)
@@ -164,7 +166,7 @@ class TextRank4Keyword:
         return key_ph
 
 
-def analyze_files(text):
+def get_text_keywords(text):
     tr4w = TextRank4Keyword()
     text_normalized = tr4w.normalize_text(text)
     sentences = tr4w.get_sentences(text_normalized)

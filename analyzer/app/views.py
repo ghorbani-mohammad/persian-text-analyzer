@@ -2,6 +2,7 @@ from rest_framework import views
 from rest_framework.response import Response
 
 from . import apps, utils
+from .rake import get_text_keywords
 
 
 class NERExtractionAPIView(views.APIView):
@@ -35,3 +36,10 @@ class ClassificationAPIView(views.APIView):
             apps.AppConfig.normalizer.normalize(text), return_all_scores=True
         )[0]
         return Response(result)
+
+
+class KeywordAPIView(views.APIView):
+    def post(self, request):
+        text = request.data["text"]
+        kw, kp = get_text_keywords(text)
+        return Response({"keywords": kw, "keyphrases": kp})
