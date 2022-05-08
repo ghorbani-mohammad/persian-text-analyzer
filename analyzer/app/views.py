@@ -22,7 +22,7 @@ class NERExtractionAPIView(views.APIView):
                 return Response(entities)
         except:
             logger.error(traceback.format_exc())
-            return Response({})
+        return Response({})
 
 
 class SentimentAPIView(views.APIView):
@@ -32,15 +32,15 @@ class SentimentAPIView(views.APIView):
             result = apps.AppConfig.sentiment_model(
                 apps.AppConfig.normalizer.normalize(text), return_all_scores=True
             )[0]
+            temp = {
+                "angry": result[0]["score"] + result[1]["score"],
+                "happy": result[3]["score"] + result[4]["score"],
+                "neutral": result[2]["score"],
+            }
+            return Response(temp)
         except:
             logger.error(traceback.format_exc())
-            return Response({})
-        temp = {
-            "angry": result[0]["score"] + result[1]["score"],
-            "happy": result[3]["score"] + result[4]["score"],
-            "neutral": result[2]["score"],
-        }
-        return Response(temp)
+        return Response({})
 
 
 class ClassificationAPIView(views.APIView):
@@ -50,10 +50,10 @@ class ClassificationAPIView(views.APIView):
             result = apps.AppConfig.classification_model(
                 apps.AppConfig.normalizer.normalize(text), return_all_scores=True
             )[0]
+            return Response(result)
         except:
             logger.error(traceback.format_exc())
-            return Response({})
-        return Response(result)
+        return Response({})
 
 
 class KeywordAPIView(views.APIView):
