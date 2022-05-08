@@ -1,4 +1,5 @@
 import logging
+import traceback
 
 from rest_framework import views
 from rest_framework.response import Response
@@ -26,8 +27,8 @@ class SentimentAPIView(views.APIView):
             result = apps.AppConfig.sentiment_model(
                 apps.AppConfig.normalizer.normalize(text), return_all_scores=True
             )[0]
-        except Exception as e:
-            logger.error(e)
+        except:
+            logger.error(traceback.format_exc())
             return {}
         temp = {
             "angry": result[0]["score"] + result[1]["score"],
@@ -44,8 +45,8 @@ class ClassificationAPIView(views.APIView):
             result = apps.AppConfig.classification_model(
                 apps.AppConfig.normalizer.normalize(text), return_all_scores=True
             )[0]
-        except Exception as e:
-            logger.error(e)
+        except:
+            logger.error(traceback.format_exc())
             return {}
         return Response(result)
 
