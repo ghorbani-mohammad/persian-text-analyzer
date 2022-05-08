@@ -13,11 +13,16 @@ logger = logging.getLogger(__name__)
 class NERExtractionAPIView(views.APIView):
     def post(self, request):
         text = request.data["text"]
-        ner_output = apps.AppConfig.ner_model(apps.AppConfig.normalizer.normalize(text))
-        if len(ner_output) > 0:
-            entities = utils.ner_report(ner_output)
-            return Response(entities)
-        return Response({})
+        try:
+            ner_output = apps.AppConfig.ner_model(
+                apps.AppConfig.normalizer.normalize(text)
+            )
+            if len(ner_output) > 0:
+                entities = utils.ner_report(ner_output)
+                return Response(entities)
+        except:
+            logger.error(traceback.format_exc())
+            return Response({})
 
 
 class SentimentAPIView(views.APIView):
@@ -29,7 +34,7 @@ class SentimentAPIView(views.APIView):
             )[0]
         except:
             logger.error(traceback.format_exc())
-            return {}
+            return Response({})
         temp = {
             "angry": result[0]["score"] + result[1]["score"],
             "happy": result[3]["score"] + result[4]["score"],
@@ -47,7 +52,7 @@ class ClassificationAPIView(views.APIView):
             )[0]
         except:
             logger.error(traceback.format_exc())
-            return {}
+            return Response({})
         return Response(result)
 
 
