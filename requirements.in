@@ -7,7 +7,7 @@ hazm
 numpy
 openpyxl
 pandas
-parsivar==0.2.3
+# parsivar==0.2.3
 sentence-transformers
 sentencepiece
 sentry-sdk
