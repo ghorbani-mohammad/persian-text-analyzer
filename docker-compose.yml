@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   persian_analyzer_api:
     container_name: persian_analyzer_api
