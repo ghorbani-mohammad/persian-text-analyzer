@@ -7,6 +7,6 @@ urlpatterns = [
     path("secret-admin/", admin.site.urls),
 ]
 
-admin.site.index_title = "Persian Text"
-admin.site.site_title = "Persian Text Django Admin"
-admin.site.site_header = "Persian Text Django Administration Panel"
+admin.site.index_title = "PersianText"
+admin.site.site_title = "PersianText Django Admin"
+admin.site.site_header = "PersianText Django Administration Panel"
