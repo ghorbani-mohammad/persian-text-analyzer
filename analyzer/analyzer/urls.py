@@ -3,8 +3,8 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path("secret-admin/", admin.site.urls),
     path("v1/app/", include("app.urls")),
+    path("secret-admin/", admin.site.urls),
 ]
 
 admin.site.index_title = "Persian Text"
